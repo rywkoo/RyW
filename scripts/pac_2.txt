@@ -1,0 +1,3 @@
+visual-studio-code-bin    # Official VS Code binary
+upscaler                  # AI image upscaler
+warehouse-git             # Git version of warehouse (optional)

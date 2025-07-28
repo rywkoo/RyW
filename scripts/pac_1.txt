@@ -1,0 +1,83 @@
+# ------------------- Theme / UI
+cava
+fastfetch
+hyprlock
+rofi
+swaync
+waybar
+pywal
+gotop
+cmatrix
+swww
+
+# ------------------- Extra Utilities
+eog                     # Eye of Gnome (image viewer)
+clapper                # GNOME media player
+neovim
+gnome-control-center   # Display/Settings (if you meant this)
+ark                    # KDE archive manager
+mission-center         # Resource monitor
+warehouse              # GUI package viewer (non-git)
+pavucontrol
+dolphin
+unzip
+nwg-displays
+fzf
+discord
+telegram-desktop
+nemo
+steam
+kitty
+brave
+spotify
+
+# ------------------- System (PipeWire / Networking / Bluetooth / Media)
+pipewire
+pipewire-alsa
+pipewire-audio
+pipewire-jack
+pipewire-pulse
+gst-plugin-pipewire
+wireplumber
+pamixer
+networkmanager
+network-manager-applet
+bluez
+bluez-utils
+blueman
+brightnessctl
+playerctl
+udiskie
+
+# ------------------- Display Manager
+sddm
+qt5-quickcontrols
+qt5-quickcontrols2
+qt5-graphicaleffects
+
+# ------------------- Screenshot / Clipboard Tools
+grim
+slurp
+wl-clipboard
+
+# ------------------- System Dependencies / Utilities
+polkit-gnome
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+xdg-user-dirs
+pacman-contrib
+parallel
+jq
+imagemagick
+qt5-imageformats
+ffmpegthumbs
+kde-cli-tools
+libnotify
+noto-fonts-emoji
+
+# ------------------- Shell & CLI Enhancements
+zsh
+starship
+eza
+duf
+fish

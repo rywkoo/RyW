@@ -1,0 +1,69 @@
+#!/bin/bash
+set -e
+
+EXTRA_DIR="${1:-$(dirname "$0")/../extra}"
+
+THEME_NAME="RyW"
+THEME_SRC="$EXTRA_DIR/sddm/$THEME_NAME"
+THEME_DST="/usr/share/sddm/themes/$THEME_NAME"
+
+SDDM_CONF_DIR="/etc/sddm.conf.d"
+SDDM_CONF_FILE="$SDDM_CONF_DIR/sddm.conf"
+SDDM_MAIN_CONF="/etc/sddm.conf"
+
+USER_NAME="$(whoami)"
+SESSION_NAME="hyprland"
+
+echo "➡️  Installing SDDM theme..."
+
+if [ ! -d "$THEME_SRC" ]; then
+    echo "❌ Theme source folder $THEME_SRC does not exist. Aborting."
+    exit 1
+fi
+
+sudo mkdir -p "$THEME_DST"
+sudo cp -r "$THEME_SRC/"* "$THEME_DST/"
+
+echo "➡️  Creating SDDM config directory and config file..."
+
+sudo mkdir -p "$SDDM_CONF_DIR"
+
+sudo tee "$SDDM_CONF_FILE" > /dev/null << EOF
+[Autologin]
+Relogin=false
+Session=$SESSION_NAME
+User=$USER_NAME
+
+[General]
+HaltCommand=/usr/bin/systemctl poweroff
+RebootCommand=/usr/bin/systemctl reboot
+
+[Theme]
+Current=$THEME_NAME
+
+[Users]
+MaximumUid=60513
+MinimumUid=1000
+EOF
+
+echo "➡️  Checking main SDDM config for ConfigFile directive..."
+
+if [ -f "$SDDM_MAIN_CONF" ]; then
+    if ! grep -q "^ConfigFile=" "$SDDM_MAIN_CONF"; then
+        echo "Adding ConfigFile directive to $SDDM_MAIN_CONF to load conf.d configs"
+        sudo sed -i '1iConfigFile=/etc/sddm.conf.d/*.conf' "$SDDM_MAIN_CONF"
+    else
+        echo "ConfigFile directive already present in $SDDM_MAIN_CONF"
+    fi
+else
+    echo "$SDDM_MAIN_CONF does not exist, creating a minimal one to include conf.d"
+    sudo tee "$SDDM_MAIN_CONF" > /dev/null << EOF
+ConfigFile=/etc/sddm.conf.d/*.conf
+EOF
+fi
+
+echo "➡️  Enabling and starting SDDM service..."
+sudo systemctl enable sddm.service
+sudo systemctl start sddm.service
+
+echo "✅ Setup complete: SDDM will auto-login $USER_NAME to session $SESSION_NAME with theme $THEME_NAME."
