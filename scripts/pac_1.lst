@@ -1,4 +1,4 @@
-# ------------------- Theme / UI
+
 cava
 fastfetch
 hyprlock
@@ -6,18 +6,17 @@ rofi
 swaync
 waybar
 pywal
-gotop
 cmatrix
 swww
 
-# ------------------- Extra Utilities
-eog                     # Eye of Gnome (image viewer)
-clapper                # GNOME media player
+
+eog                
+clapper           
 neovim
-gnome-control-center   # Display/Settings (if you meant this)
-ark                    # KDE archive manager
-mission-center         # Resource monitor
-warehouse              # GUI package viewer (non-git)
+gnome-control-center  
+ark                   
+mission-center       
+warehouse         
 pavucontrol
 dolphin
 unzip
@@ -31,7 +30,6 @@ kitty
 brave
 spotify
 
-# ------------------- System (PipeWire / Networking / Bluetooth / Media)
 pipewire
 pipewire-alsa
 pipewire-audio
@@ -49,18 +47,15 @@ brightnessctl
 playerctl
 udiskie
 
-# ------------------- Display Manager
 sddm
 qt5-quickcontrols
 qt5-quickcontrols2
 qt5-graphicaleffects
 
-# ------------------- Screenshot / Clipboard Tools
 grim
 slurp
 wl-clipboard
 
-# ------------------- System Dependencies / Utilities
 polkit-gnome
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
@@ -75,7 +70,6 @@ kde-cli-tools
 libnotify
 noto-fonts-emoji
 
-# ------------------- Shell & CLI Enhancements
 zsh
 starship
 eza
